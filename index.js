@@ -10,7 +10,7 @@ puppeteer.use(StealthPlugin())
 
 
 // puppeteer usage as normal
-puppeteer.launch({ headless: false}).then(async browser => {
+puppeteer.launch({ headless: true}).then(async browser => {
   const page = await browser.newPage()
   await page.setViewport({
     width: 1920,
@@ -121,7 +121,7 @@ async function answerQuestions(page){
 
     // Ask the AI
     const msg = await anthropic.messages.create({
-      model: "claude-3-5-sonnet-20240620",
+      model: "claude-3-5-sonnet-latest",
       max_tokens: 1000,
       temperature: 0,
       system: `You are going to be given a screenshot of an IXL math problem. You have to give a response in json like this: {"keys":[{"type:"text","content":"0"},{"type":"click":"Text that is inside the element you want to click"} {"type:"key","content":"Enter"}]} This is the keys the puppeteer will have to press to enter the answer.  Use the Enter key to submit your answer, do not click the submit button, use the Enter key. Use Tab to navigate to other text inputs, DO NOT USE TAB AFTER CLICK, YOU DONT NEED TO. Do not write anything else, except the json. Your answer will be directly parsed into a json object.`,
@@ -149,8 +149,6 @@ async function answerQuestions(page){
     didGetAnswer = true
     clearTimeout(aiAnswerTimeout)
 
-
-    //let answer = JSON.parse(msg.content[0].text).final
 
     // Parse the answer
     let keys = JSON.parse(msg.content[0].text).keys
