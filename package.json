@@ -1,14 +1,21 @@
 {
-  "dependencies": {
-    "@anthropic-ai/sdk": "^0.27.3",
-    "clui": "^0.3.6",
-    "puppeteer": "^23.3.0",
-    "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
-    "readline-sync": "^1.4.10"
-  },
-  "type": "module",
-  "scripts": {
-    "start": "node --env-file=.env index.js"
-  }
+   "name": "ixl-solver",
+   "version": "1.0.0",
+   "dependencies": {
+      "@anthropic-ai/sdk": "^0.27.3",
+      "@google/generative-ai": "^0.21.0",
+      "clui": "^0.3.6",
+      "puppeteer": "^23.3.0",
+      "puppeteer-extra": "^3.3.6",
+      "puppeteer-extra-plugin-stealth": "^2.11.2",
+      "readline-sync": "^1.4.10"
+   },
+   "scripts": {
+      "start": "electron .",
+      "nogui": "node --env-file=.env index.js --nogui"
+   },
+   "devDependencies": {
+      "electron": "^33.2.0",
+      "electron-builder": "^25.1.8"
+   }
 }
