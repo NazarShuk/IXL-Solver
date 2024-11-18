@@ -11,7 +11,7 @@
    "scripts": {
       "start": "electron .",
       "nogui": "node --env-file=.env index.js --nogui",
-      "build": "npx @electron/packager . IXLSolver --platform=windows"
+      "build": "npx @electron/packager . IXLSolver --platform=win32"
    },
    "devDependencies": {
       "@electron/packager": "^18.3.6",
